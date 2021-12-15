@@ -1,4 +1,25 @@
 <x-guest-layout>
+    <x-slot name="navtop">
+        <div class="grid grid-flow-row-dense grid-cols-3 xl:grid-cols-8 divide-opacity-0">
+            <div class="grid col-span-2 xl:col-span-7">
+                <img class="object-contain h-8 leading-tight" src="https://i.ibb.co/ykWR0YS/small-ITS-logo.png" alt="ITS Logo">
+            </div>
+            <div class="flex flex-row-reverse space-x-4 space-x-reverse">
+                <div>
+                    <x-logreg-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Masuk') }}
+                    </x-logreg-link>
+                </div>
+
+                <div>
+                    <x-logreg-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Daftar') }}
+                    </x-logreg-link>
+                </div>
+            </div>
+        </div>
+    </x-slot>
+
     <x-slot name="header">
         <div class="grid grid-cols-3 divide-opacity-0">
             <div>
