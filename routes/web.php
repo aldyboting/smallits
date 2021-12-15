@@ -1,5 +1,7 @@
 <?php
 
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +19,36 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::group(['middleware' => ['permission:kepadatan']], function () {
+    Route::get(RouteServiceProvider::CIVITAS_HOME, function () {
+        return view('dashboard/dashboard-civitas');
+    })->name('dashboard-civitas');
+});
+
+Route::group(['middleware' => ['permission:civitas ITS']], function () {
+    Route::get(RouteServiceProvider::DPTSI_HOME, function () {
+        return view('dashboard/dashboard-dptsi');
+    })->name('dashboard-dptsi');
+
+    Route::get("/viewcivitas", function () {
+        return view('civitas/view');
+    })->name('view-civitas');
+
+    Route::get("/addcivitas", function () {
+        return view('civitas/add');
+    })->name('add-civitas');
+});
+
+    Route::group(['middleware' => ['permission:potensi penjualan']], function () {
+    Route::get(RouteServiceProvider::KOMERSIL_HOME, function () {
+        return view('dashboard/dashboard-komersil');
+    })->name('dashboard-komersil');
+});
+
+Route::group(['middleware' => ['role:Super-Admin']], function () {
+    Route::get(RouteServiceProvider::HOME, function () {
+        return view('dashboard/dashboard');
+    })->name('dashboard');
+});
 
 require __DIR__.'/auth.php';

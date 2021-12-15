@@ -6,30 +6,16 @@
             </div>
             <div class="flex flex-row-reverse space-x-4 space-x-reverse">
                 <div>
-                    <x-logreg-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-logreg-link :href="route('login')" :active="request()->routeIs('login')">
                         {{ __('Masuk') }}
                     </x-logreg-link>
                 </div>
 
                 <div>
-                    <x-logreg-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-logreg-link :href="route('register')" :active="request()->routeIs('register')">
                         {{ __('Daftar') }}
                     </x-logreg-link>
                 </div>
-            </div>
-        </div>
-    </x-slot>
-
-    <x-slot name="header">
-        <div class="grid grid-cols-3 divide-opacity-0">
-            <div>
-                <img class="object-contain h-8 leading-tight" src="https://4.bp.blogspot.com/-i5MLRxGuK5s/VVADS3PUL2I/AAAAAAAAQ20/3RljzZYiHeA/s1600/logo-its-putih-transparan.png" alt="ITS Logo">
-            </div>
-            <div></div>
-            <div>
-                <h2 class="font-bold text-2xl text-white leading-tight text-right">
-                    SMALL ITS
-                </h2>
             </div>
         </div>
     </x-slot>

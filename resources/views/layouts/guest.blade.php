@@ -20,14 +20,41 @@
     <body class="bg-gray-100">
     <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            {{ $navtop }}
+            <div class="grid grid-flow-row-dense grid-cols-3 xl:grid-cols-8 divide-opacity-0">
+                <div class="grid col-span-2 xl:col-span-7">
+                    <img class="object-contain h-8 leading-tight" src="https://i.ibb.co/ykWR0YS/small-ITS-logo.png" alt="ITS Logo">
+                </div>
+                <div class="flex flex-row-reverse space-x-4 space-x-reverse">
+                    <div>
+                        <x-logreg-link :href="route('login')" :active="request()->routeIs('login')">
+                            {{ __('Masuk') }}
+                        </x-logreg-link>
+                    </div>
+
+                    <div>
+                        <x-logreg-link :href="route('register')" :active="request()->routeIs('register')">
+                            {{ __('Daftar') }}
+                        </x-logreg-link>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 
         <!-- Page Heading -->
         <header class="bg-indigo-800 shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
+                <div class="grid grid-cols-3 divide-opacity-0">
+                    <div>
+                        <img class="object-contain h-8 leading-tight" src="https://4.bp.blogspot.com/-i5MLRxGuK5s/VVADS3PUL2I/AAAAAAAAQ20/3RljzZYiHeA/s1600/logo-its-putih-transparan.png" alt="ITS Logo">
+                    </div>
+                    <div></div>
+                    <div>
+                        <h2 class="font-bold text-2xl text-white leading-tight text-right">
+                            SMALL ITS
+                        </h2>
+                    </div>
+                </div>
             </div>
         </header>
 
