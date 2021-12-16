@@ -31,11 +31,17 @@ Route::group(['middleware' => ['permission:civitas ITS']], function () {
         return view('dashboard/dashboard-dptsi');
     })->name('dashboard-dptsi');
 
-    Route::get("/viewcivitas", [CivitasUserController::class, 'getAllCivitasUser']
-    )->name('view-civitas');
+    Route::get("/viewcivitas", [CivitasUserController::class, 'getAllCivitasUser'])
+        ->name('view-civitas');
 
-    Route::post("/addcivitas/add", [CivitasUserController::class, 'store']
-    )->name('civitas.store');
+    Route::post("/addcivitas/add", [CivitasUserController::class, 'store'])
+        ->name('civitas.store');
+
+    Route::get("/editcivitas/{id}/edit", [CivitasUserController::class, 'edit'])
+        ->name('civitas.edit');
+
+    Route::put("/editcivitas/{id}/update", [CivitasUserController::class, 'update'])
+        ->name('civitas.update');
 
     Route::get("/addcivitas", function () {
         return view('civitas/add');

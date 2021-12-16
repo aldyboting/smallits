@@ -45,7 +45,10 @@
                                 <td>{{ $item->nomor_induk }}</td>
                                 <td>{{ $item->email}}</td>
                                 <td>{{ $item->jabatan}}</td>
-                                <td><button class="mr-12 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onclick="window.location='{{ route("add-civitas") }}'">Lihat/Ubah</button></td>
+                                <td>
+                                    <button class="mr-4 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onclick="window.location='{{ route('civitas.edit', $item->id) }}'">Lihat/Ubah</button>
+                                    <button class="mr-4 bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded" onclick="window.location='{{ route("add-civitas") }}'">Hapus</button>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
