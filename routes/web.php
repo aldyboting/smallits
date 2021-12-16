@@ -34,6 +34,9 @@ Route::group(['middleware' => ['permission:civitas ITS']], function () {
     Route::get("/viewcivitas", [CivitasUserController::class, 'getAllCivitasUser']
     )->name('view-civitas');
 
+    Route::post("/addcivitas/add", [CivitasUserController::class, 'store']
+    )->name('civitas.store');
+
     Route::get("/addcivitas", function () {
         return view('civitas/add');
     })->name('add-civitas');

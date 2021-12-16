@@ -16,7 +16,7 @@ class CivitasITSFactory extends Factory
     public function definition()
     {
         return [
-            'NIM/NRP/NIP' => $this->faker->uuid(),
+            'nomor_induk' => $this->faker->uuid(),
             'nama_depan' => $this->faker->firstName(),
             'nama_belakang' => $this->faker->lastName(),
             'email' => preg_replace('/@example\..*/', '@smallits.com', $this->faker->unique()->safeEmail),

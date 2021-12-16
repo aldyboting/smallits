@@ -21,7 +21,7 @@ class CreateCivitasITSSeeder extends Seeder
     {
         // create demo Civitas ITS
         CivitasITS::factory()->create([
-            'NIM/NRP/NIP' => "1122334455",
+            'nomor_induk' => "1122334455",
             'nama_depan' => 'Divisi',
             'nama_belakang' => 'DPTSI',
             'email' => 'dptsi@smallits.com',
@@ -32,7 +32,7 @@ class CreateCivitasITSSeeder extends Seeder
         ]);
 
         CivitasITS::factory()->create([
-            'NIM/NRP/NIP' => "55441166",
+            'nomor_induk' => "55441166",
             'nama_depan' => 'Divisi',
             'nama_belakang' => 'Komersialisasi',
             'email' => 'komersil@smallits.com',
@@ -43,7 +43,7 @@ class CreateCivitasITSSeeder extends Seeder
         ]);
 
         CivitasITS::factory()->create([
-            'NIM/NRP/NIP' => "052116100072",
+            'nomor_induk' => "052116100072",
             'nama_depan' => 'Bejo',
             'nama_belakang' => 'Sadikin',
             'email' => 'bejo@gmail.com',

@@ -17,7 +17,12 @@
         </div>
     </x-slot>
 
+
     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        @if(session()->has('message-succes'))
+
+        @endif
+
         <div class="grid grid-cols-1 my-4 mx-6">
             <div class="w-full min-w-fit py-4 px-8 bg-white shadow-lg rounded-lg mx-auto my-6">
                 <div>
@@ -25,7 +30,32 @@
                 </div>
             </div>
 
-            <form class="w-full ">
+            @if(session()->has('message-succes'))
+                <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-green-500 fixed inset-x-0 top-0 left-0">
+  <span class="text-xl inline-block mr-5 align-middle">
+    <i class="fas fa-bell"></i>
+  </span>
+                    <span class="inline-block align-middle mr-8">
+    <b class="capitalize">Sukses!</b> Data berhasil ditambahkan
+  </span>
+                    <button class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none" onclick="closeAlert(event)">
+                        <span>×</span>
+
+                    </button>
+                </div>
+                <script>
+                    function closeAlert(event){
+                        let element = event.target;
+                        while(element.nodeName !== "BUTTON"){
+                            element = element.parentNode;
+                        }
+                        element.parentNode.parentNode.removeChild(element.parentNode);
+                    }
+                </script>
+            @endif
+
+            <form class="w-full" action="{{ route('civitas.store') }}" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="w-full min-w-fit py-4 px-8 bg-white shadow-lg rounded-lg mx-auto my-6">
 
                         <div class="flex flex-wrap -mx-3 mb-6">
@@ -33,14 +63,14 @@
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                                     Nama Depan
                                 </label>
-                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="nama-depan" type="text" placeholder="Jane">
+                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="nama_depan" name="nama_depan" type="text" placeholder="Jane">
                                 <p class="text-red-500 text-xs italic">Harap isi kolom ini.</p>
                             </div>
                             <div class="w-full md:w-1/2 px-3">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                     Nama Belakang
                                 </label>
-                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="nama-belakang" type="text" placeholder="Doe">
+                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="nama_belakang" name="nama_belakang" type="text" placeholder="Doe">
                             </div>
                         </div>
                         <div class="flex flex-wrap -mx-3 mb-6">
@@ -48,7 +78,7 @@
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                                     Alamat Email
                                 </label>
-                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="email" type="text" placeholder="budi@abc.com">
+                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="email" name="email" type="text" placeholder="budi@abc.com">
                                 <p class="text-gray-600 text-xs italic">Masukkan Alamat Email</p>
                             </div>
                         </div>
@@ -57,7 +87,7 @@
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                                     Password
                                 </label>
-                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="password" type="password" placeholder="******************">
+                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="password" name="password" type="password" placeholder="******************">
                                 <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
                             </div>
                         </div>
@@ -67,7 +97,7 @@
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                                     Nomor Telepon
                                 </label>
-                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="no-telp" type="text" placeholder="081291029102">
+                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="no_telp" name="no_telp" type="text" placeholder="081291029102">
                                 <p class="text-gray-600 text-xs italic">Masukkan Nomor Telepon</p>
                             </div>
                         </div>
@@ -77,7 +107,7 @@
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                                     Alamat (Sesuai KTP)
                                 </label>
-                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="alamat" type="text" placeholder="JL. Raya ITS, Sukolilo">
+                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="alamat" name="alamat" type="text" placeholder="JL. Raya ITS, Sukolilo">
                                 <p class="text-gray-600 text-xs italic">Masukkan Alamat Domisili</p>
                             </div>
                         </div>
@@ -91,7 +121,7 @@
                                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                         <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                                     </div>
-                                    <input datepicker type="text" id="tgl-lahir" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+                                    <input datepicker type="text" id="tgl_lahir" name="tgl_lahir" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
                                 </div>
                                 <p class="text-gray-600 text-xs italic">Masukkan Tanggal Lahir</p>
                             </div>
@@ -102,7 +132,7 @@
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                                     Jenis Kelamin
                                 </label>
-                                <select class="block appearance-none text-gray-600 w-full bg-white border border-gray-400 shadow-inner px-4 py-2 pr-8 rounded" id="jenis-kelamin">
+                                <select class="block appearance-none text-gray-600 w-full bg-white border border-gray-400 shadow-inner px-4 py-2 pr-8 rounded" id="jenis_kelamin" name="jenis_kelamin">
                                         <option>Pria</option>
                                         <option>Wanita</option>
                                 </select>
@@ -115,7 +145,7 @@
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                                     NIM/NRP/NIP
                                 </label>
-                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="no-induk" type="text" placeholder="05211840000080">
+                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="nomor_induk" name="nomor_induk" type="text" placeholder="05211840000080">
                                 <p class="text-gray-600 text-xs italic">Masukkan NIM/NRP/NIP</p>
                             </div>
                         </div>
@@ -125,7 +155,7 @@
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                                     Jabatan
                                 </label>
-                                <select id="jabatan" class="block appearance-none text-gray-600 w-full bg-white border border-gray-400 shadow-inner px-4 py-2 pr-8 rounded">
+                                <select id="jabatan" name="jabatan" class="block appearance-none text-gray-600 w-full bg-white border border-gray-400 shadow-inner px-4 py-2 pr-8 rounded">
                                         <option>Mahasiswa</option>
                                         <option>Dosen</option>
                                         <option>Tendik</option>
@@ -142,7 +172,7 @@
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                                     Departemen
                                 </label>
-                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="departemen" type="text" placeholder="Sistem Informasi">
+                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="departemen" name="departemen" type="text" placeholder="Sistem Informasi">
                                 <p class="text-gray-600 text-xs italic">Masukkan Nama Departemen Asal Anda</p>
                             </div>
                         </div>
@@ -156,7 +186,7 @@
                         </div>
                         <div class="flex flex-row-reverse mr-2">
                             <!--Add button-->
-                            <button class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded" onclick="window.location='{{ route("add-civitas") }}'">Tambah</button>
+                            <button class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded" type="submit">Tambah</button>
                         </div>
                     </div>
                 </div>
