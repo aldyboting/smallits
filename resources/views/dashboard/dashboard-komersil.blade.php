@@ -32,30 +32,20 @@
                     <h3 class="text-gray-800 text-xl font-semibold align-center">Laporan Komplain</h3>
                 </div>
             </div>
-            <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg mx-auto my-6" onclick="window.location='{{ route("add-civitas") }}'">
+            <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg mx-auto my-6" onclick="window.location='{{ route("potensi-penjualan") }}'">
                 <div>
-                    <img class="object-contain h-24 mx-auto my-2" src="{{ URL::to('/') }}/menu-asset/add-folder.png" alt="">
-                    <h3 class="text-gray-800 text-xl font-semibold align-center">Buat Data Civitas ITS</h3>
+                    <img class="object-contain h-24 mx-auto my-2" src="{{ URL::to('/') }}/menu-asset/sale.png" alt="">
+                    <h3 class="text-gray-800 text-xl font-semibold align-center">Lihat Potensi Penjualan</h3>
                 </div>
             </div>
-            <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg mx-auto my-6" onclick="window.location='{{ route("view-civitas") }}'">
-                <div>
-                    <img class="object-contain h-24 mx-auto my-2" src="{{ URL::to('/') }}/menu-asset/open-folder.png" alt="">
-                    <h3 class="text-gray-800 text-xl font-semibold align-center">Lihat Data Civitas ITS</h3>
-                </div>
-            </div>
-            <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg mx-auto my-6" onclick="window.location='{{ route("add-civitas") }}'">
-                <div>
-                    <img class="object-contain h-24 mx-auto my-2" src="{{ URL::to('/') }}/menu-asset/folder.png" alt="">
-                    <h3 class="text-gray-800 text-xl font-semibold align-center">Ubah Data Civitas ITS</h3>
-                </div>
-            </div>
+            <div></div>
             <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg mx-auto my-6">
                 <div>
                     <img class="object-contain h-24 mx-auto my-2" src="{{ URL::to('/') }}/menu-asset/signage.png" alt="">
                     <h3 class="text-gray-800 text-xl font-semibold align-center">Cek Lahan Parkir</h3>
                 </div>
             </div>
+            <div></div>
         </div>
     </div>
 </x-app-layout>

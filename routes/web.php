@@ -39,10 +39,14 @@ Route::group(['middleware' => ['permission:civitas ITS']], function () {
     })->name('add-civitas');
 });
 
-    Route::group(['middleware' => ['permission:potensi penjualan']], function () {
+Route::group(['middleware' => ['permission:potensi penjualan']], function () {
     Route::get(RouteServiceProvider::KOMERSIL_HOME, function () {
         return view('dashboard/dashboard-komersil');
     })->name('dashboard-komersil');
+
+    Route::get("/potensipenjualan", function () {
+        return view('komersil/potensi');
+    })->name('potensi-penjualan');
 });
 
 Route::group(['middleware' => ['role:Super-Admin']], function () {
