@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CivitasUserController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -30,9 +31,8 @@ Route::group(['middleware' => ['permission:civitas ITS']], function () {
         return view('dashboard/dashboard-dptsi');
     })->name('dashboard-dptsi');
 
-    Route::get("/viewcivitas", function () {
-        return view('civitas/view');
-    })->name('view-civitas');
+    Route::get("/viewcivitas", [CivitasUserController::class, 'getAllCivitasUser']
+    )->name('view-civitas');
 
     Route::get("/addcivitas", function () {
         return view('civitas/add');

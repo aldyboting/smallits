@@ -31,37 +31,23 @@
                     <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                         <thead>
                         <tr>
-                            <th data-priority="1">Name</th>
-                            <th data-priority="2">Position</th>
-                            <th data-priority="3">Office</th>
-                            <th data-priority="4">Age</th>
-                            <th data-priority="5">Start date</th>
-                            <th data-priority="6">Salary</th>
-                            <th data-priority="7">Action</th>
+                            <th data-priority="1">Nama Lengkap</th>
+                            <th data-priority="2">NIM/NRP/NIP</th>
+                            <th data-priority="3">Email</th>
+                            <th data-priority="4">Jabatan</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
-                            <td><button class="mr-12 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onclick="window.location='{{ route("add-civitas") }}'">Lihat/Ubah</button></td>
-                        </tr>
-
-                        <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
-
-                        <tr>
-                            <td>Donna Snider</td>
-                            <td>Customer Support</td>
-                            <td>New York</td>
-                            <td>27</td>
-                            <td>2011/01/25</td>
-                            <td>$112,000</td>
-                            <td><button class="mr-12 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onclick="window.location='{{ route("add-civitas") }}'">Lihat/Ubah</button></td>
-                        </tr>
+                        @foreach ($users as $item)
+                            <tr>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->nomor_induk }}</td>
+                                <td>{{ $item->email}}</td>
+                                <td>{{ $item->jabatan}}</td>
+                                <td><button class="mr-12 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onclick="window.location='{{ route("add-civitas") }}'">Lihat/Ubah</button></td>
+                            </tr>
+                        @endforeach
                         </tbody>
 
                     </table>
